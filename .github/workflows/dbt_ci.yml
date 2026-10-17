@@ -31,3 +31,10 @@ jobs:
       - name: Test dbt connection
         working-directory: olist_transformation
         run: dbt debug
+      - name: Run dbt models
+        working-directory: olist_transformation
+        run: dbt run
+
+      - name: Run dbt tests
+        working-directory: olist_transformation
+        run: dbt test
