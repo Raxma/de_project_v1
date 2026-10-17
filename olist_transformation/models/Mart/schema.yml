@@ -1,0 +1,39 @@
+version: 2
+models:
+  - name: customer_summary
+    description: "Customer-level summary model aggregating order and review data."
+
+    columns:
+      - name: customer_unique_id
+        description: "Unique identifier for each customer."
+        tests:
+          - not_null
+          - unique
+
+      - name: total_orders
+        description: "Total number of orders placed by the customer."
+        tests:
+          - not_null
+  - name: city_performance
+    description: "City-level performance model aggregating order and delivery data."
+
+    columns:
+      - name: city
+        description: "Name of the city."
+        tests:
+          - not_null
+          - unique
+
+      - name: total_orders
+        description: "Total number of orders placed in the city."
+        tests:
+          - not_null
+
+      - name: delivered_orders
+        description: "Total number of orders that were successfully delivered in the city."
+        tests:
+          - not_null
+
+      - name: avg_delivery_time
+        description: "Average delivery time in days for orders delivered in the city."
+    

@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: order_enriched_model
+    description: "Order-level model enriched with customer information."
+
+    columns:
+      - name: order_id
+        description: "Unique identifier for each order."
+        tests:
+          - not_null
+          - unique
+
+      - name: customer_id
+        description: "Order-specific customer identifier used to link orders to customer records."
+        tests:
+          - not_null
+
+      - name: customer_unique_id
+        description: "Persistent customer identifier used to track the same customer across multiple orders."
+        tests:
+          - not_null
+
+      - name: status
+        description: "Current status of the order."
+
+      - name: city
+        description: "Customer city associated with the order."

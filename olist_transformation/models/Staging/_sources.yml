@@ -1,0 +1,36 @@
+version: 2
+sources:
+  - name: olist_raw
+    description: "Raw Olist data from Snowflake"
+    database: RAW_DATA
+    schema: EXTERNAL
+    tables: 
+      - name: OLIST_CUSTOMERS
+        description: "Raw customer table ingested from the Olist dataset, containing details about each customer."
+        columns:
+          - name: CUSTOMER_ID
+            description: "A unique identifier for each customer."
+          - name: CUSTOMER_UNIQUE_ID
+            description: "A unique identifier that can be used to track a customer's activity across multiple orders."
+          - name: CUSTOMER_ZIP_CODE_PREFIX
+            description: "The zip code prefix of the customer's location."
+          - name: CUSTOMER_CITY
+            description: "The city where the customer is located."
+          - name: CUSTOMER_STATE
+            description: "The state where the customer is located."
+      - name: OLIST_ORDERS
+        description: "Main orders table with timestamps and status."
+      - name: OLIST_ORDER_ITEMS
+        description: "Details of each item in the orders, including product information and pricing."
+      - name: OLIST_PRODUCTS
+        description: "Product information including category and name."   
+      - name: OLIST_GEOLOCATION
+        description: "Geolocation data for customers and sellers, including zip code and city information."
+      - name: OLIST_ORDER_PAYMENTS
+        description: "Payment information for each order, including payment type and amount." 
+      - name: OLIST_ORDER_REVIEWS
+        description: "Customer reviews for each order, including review score and comments."
+      - name: OLIST_SELLERS
+        description: "Information about sellers, including their location and zip code."  
+      - name: OLIST_CATEGORY_NAME_TRANSLATION
+        description: "Translation of product category names from Portuguese to English."  

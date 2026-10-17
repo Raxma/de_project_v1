@@ -1,0 +1,47 @@
+version: 2
+models:
+  - name: stg_orders
+    description: "Staging model for orders data, transforming raw order information into a structured format."
+    columns:
+      - name: order_id
+        description: "Unique identifier for each order."
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: "Identifier linking the order to a specific customer."
+        tests:
+          - not_null
+          - unique
+          - relationships:
+             arguments:
+               to: ref('stg_customers')
+               field: customer_id
+      - name: status
+        description: "The current status of the order."
+        tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - APPROVED
+                  - CANCELED
+                  - CREATED
+                  - DELIVERED
+                  - INVOICED
+                  - PROCESSING
+                  - SHIPPED
+                  - UNAVAILABLE
+  - name: stg_customers
+    description: "Staging model for customers data, transforming raw customer information into a structured format."  
+    columns:
+      - name: customer_id
+        description: "Order-specific customer identifier used to link customer and order records."
+        tests:
+          - not_null
+          - unique
+      - name: customer_unique_id
+        description: "A unique identifier that can be used to track a customer's activity across multiple orders."
+        tests:
+          - not_null
+
+      
