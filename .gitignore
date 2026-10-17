@@ -1,0 +1,12 @@
+.env
+__pycache__/
+*.pyc
+
+.venv/
+venv/
+
+dataset/
+
+olist_transformation/target/
+olist_transformation/logs/
+olist_transformation/dbt_packages/
